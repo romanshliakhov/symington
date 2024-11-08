@@ -104,14 +104,8 @@ button,
 p {
   margin: 0;
   padding: 0;
-  color: var(--cl-b);
   font-family: var(--font-family);
   font-style: normal;
-}
-
-p {
-  font-weight: 400;
-  font-size: clamp(14px, 1.1111vw, 16px);
 }
 
 img {

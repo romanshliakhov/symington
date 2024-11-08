@@ -5064,7 +5064,6 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	__webpack_require__("./source/js/_vars.js");
 /******/ 	__webpack_require__("./source/js/_vendor.js");
 /******/ 	__webpack_require__("./source/js/main.js");
-/******/ 	__webpack_require__("./source/js/vendor/swiper.js");
 /******/ 	__webpack_require__("./source/js/components/accordion.js");
 /******/ 	__webpack_require__("./source/js/components/dinamicHeight.js");
 /******/ 	__webpack_require__("./source/js/components/mobile-menu.js");
@@ -5073,6 +5072,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	__webpack_require__("./source/js/functions/customFunctions.js");
 /******/ 	__webpack_require__("./source/js/functions/disable-scroll.js");
 /******/ 	__webpack_require__("./source/js/functions/enable-scroll.js");
+/******/ 	__webpack_require__("./source/js/vendor/swiper.js");
 /******/ 	var __webpack_exports__ = __webpack_require__("./source/js/functions/scripts/check-viewport.js");
 /******/ 	
 /******/ })()

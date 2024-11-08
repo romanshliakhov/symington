@@ -1,57 +1,143 @@
-// .footer {
-//   padding: clamp(35px, 6.9444vw, 100px) 0 clamp(30px, 6.9444vw, 100px);
-//   background: var(--bg-e);
-//   position: relative;
-//   z-index: 1;
-
-//   &__box {
-//     display: grid;
-//     position: relative;
-//     align-items: center;
-//     grid-gap: clamp(24px, 2.7778vw, 40px);
-
-//     @include for-desktop{
-//       grid-template-columns: 1fr 1.3fr 1fr;
-//     }
-
-//     @include desktop{
-//       @include for-tablet{
-//         grid-template-columns: .65fr 1.3fr auto;
-//       }
-//     }
- 
-//     @include tablet{
-//       @include for-small-tablet{
-//         grid-template-columns: auto 1fr auto;
-//       }
-//     }
-  
-//     @include small-tablet{
-//       grid-template-columns: 100%;
-//       justify-items: center;
-//       grid-gap: 35px;
-     
-//     }
-
-//     @media (max-width: (380px)) {
-//       justify-items: start;
-//     }
-//   }
-
-//   .socials{
-//     @include for-small-tablet{
-//       justify-self: end;
-//     }
-//   }
-
-//   @include small-tablet{
-//     padding: 35px 0 30px;
-//   }
-
-// }
-
 .footer {
     padding: 41px 0 24px;
     background-color: var(--bg-d);
-    color: var(--cl-a);
+
+    @include small-tablet {
+        padding-bottom: 65px;
+    }
+
+    &__wrapp {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 45px;
+    }
+
+    &__logo {
+        margin-bottom: 30px;
+    }
+
+    &__accreditation {
+        margin-bottom: 35px;
+        max-width: 280px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 19px;
+        line-height: 120%;
+        font-weight: 600;
+        color: var(--cl-g);
+        letter-spacing: 0.03em;
+
+        span {
+            color: var(--cl-a);
+        }
+    }
+
+    &__box {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        gap: clamp(20px, 4.861vw, 70px);
+
+        @include small-tablet {
+            flex-direction: column;
+            gap: 33px;
+        }
+
+        &-contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            @include mobile {
+                gap: 25px;
+            }
+        }
+
+        &-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            @include mobile {
+                gap: 25px;
+            }
+        }
+    }
+
+    &__title {
+        font-size: 19px;
+        line-height: 110%;
+        font-weight: 800;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: var(--cl-a);
+    }
+
+    &__contacts {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        &-info {
+            display: flex;
+            gap: 10px;
+            font-size: 16px;
+            line-height: 100%;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            color: var(--cl-a);
+        }
+
+        a p {
+            text-decoration: underline;
+        }
+    }
+
+    &__menu {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px clamp(25px, 5.208vw, 75px);
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+        color: var(--cl-a);
+    }
+
+    &__bottom {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0 14px;
+        font-size: 12px;
+        line-height: 140%;
+        color: var(--cl-a);
+        letter-spacing: 0.03em;
+
+        a {
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: -10px;
+                transform: translateY(-50%);
+                width: 4px;
+                height: 1px;
+                background-color: var(--bg-a);
+            }
+        }
+
+        @include mobile {
+            p {
+                width: 100%;
+            }
+
+            a:first-child {
+                color: red;
+            }
+        }
+    }
 }
