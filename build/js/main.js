@@ -5069,10 +5069,10 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	__webpack_require__("./source/js/components/mobile-menu.js");
 /******/ 	__webpack_require__("./source/js/components/modals.js");
 /******/ 	__webpack_require__("./source/js/components/sliders.js");
-/******/ 	__webpack_require__("./source/js/vendor/swiper.js");
 /******/ 	__webpack_require__("./source/js/functions/customFunctions.js");
 /******/ 	__webpack_require__("./source/js/functions/disable-scroll.js");
 /******/ 	__webpack_require__("./source/js/functions/enable-scroll.js");
+/******/ 	__webpack_require__("./source/js/vendor/swiper.js");
 /******/ 	var __webpack_exports__ = __webpack_require__("./source/js/functions/scripts/check-viewport.js");
 /******/ 	
 /******/ })()

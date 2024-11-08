@@ -33,6 +33,7 @@
   --cl-a: #ffffff; // var(--cl-a);
   --cl-b: #000000; // var(--cl-b);
   --cl-c: #43B94B; // var(--cl-c);
+  --cl-d: #2C8132; // var(--cl-d);
 
   // --------------- default background color variables ---------------
   --bg-a: #ffffff; // var(--bg-a);
@@ -43,7 +44,8 @@
 
   // --------------- default border color variable ---------------
   --br-a: #43B94B; // var(--br-a);
-  --br-B: #E7FFE8; // var(--br-b);
+  --br-b: #E7FFE8; // var(--br-b);
+  --br-c: #d9d9d9; // var(--br-c);
  
  // --------------- loader variable -------------------------------
  --loader: linear-gradient(90deg, #7FFF92 0%, rgba(255, 255, 255, 1) 100%, rgba(255, 255, 255, 1) 5%, #FEFAE9 10%); // var(--loader);
