@@ -1,0 +1,41 @@
+.card-categories {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-g);
+    border-radius: 7px;
+    overflow: hidden;
+    transition: all .4s;
+
+    &:hover {
+        background-color: var(--bg-d);
+
+        .card-categories__title {
+            color: var(--cl-a);
+        }
+    }
+
+    &__title {
+        padding: 13px 0;
+        font-size: 20px;
+        line-height: 120%;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        text-align: center;
+        transition: all .4s;
+    }
+
+    &__image {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        picture,
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+}

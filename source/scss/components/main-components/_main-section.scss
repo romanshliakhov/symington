@@ -60,6 +60,10 @@
 
         @include ios{
             grid-template-columns: 100%;
+
+            &.promo {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     }
 }

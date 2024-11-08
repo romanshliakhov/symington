@@ -1,10 +1,100 @@
-.card-product{
+.card-product {
     position: relative;
     display: flex;
     flex-direction: column;
     padding: 7px clamp(10px, 2.951vw, 17px) 20px;
     border: 1px solid var(--br-c);
     border-radius: 7px;
+    overflow: hidden;
+
+    &.limited {
+        grid-column: span 2;
+        padding: 40px;
+        flex-direction: column-reverse;
+        justify-content: center;
+        gap: 20px;
+        background-color: var(--bg-g);
+
+        &::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 308px;
+            height: 108px;
+            background-color: var(--cl-c);
+            border-top-left-radius: 20px;
+        }
+
+        .card-product__buy {
+            margin-bottom: 0;
+            width: fit-content;
+            padding: 13px 34px;
+            font-size: 20px;
+        }
+
+        .card-product__info {
+            max-width: 290px;
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            gap: 0;
+        }
+
+        .card-product__price {
+            font-size: 82px;
+            line-height: 100%;
+            font-weight: 900;
+            color: var(--cl-f);
+        }
+
+        .card-product__title {
+            font-size: 36px;
+            line-height: 100%;
+            font-weight: 400;
+        }
+
+        .card-product__image {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+    }
+
+    &.promo {
+        background-color: var(--bg-h);
+    }
+
+    &__label {
+        width: fit-content;
+        padding: 0 10px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 17px;
+        line-height: 200%;
+        color: var(--cl-a);
+        border-radius: 7px;
+
+        &.special-offer {
+            right: initial;
+            left: 40px;
+            background-color: var(--bg-c);
+        }
+
+        &.status {
+            background-color: var(--bg-e);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        &.discount {
+            background-color: var(--bg-c);
+            font-weight: 700;
+        }
+    }
 
     &__image {
         margin-bottom: 10px;
@@ -12,6 +102,12 @@
         align-items: center;
         justify-content: center;
         flex-grow: 1;
+
+        picture,
+        img {
+            width: 100%;
+            height: initial;
+        }
     }
 
     &__buy {
