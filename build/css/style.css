@@ -57,7 +57,11 @@
   --cl-c: #43B94B;
   --bg-a: #ffffff;
   --bg-b: #000000;
+  --bg-c: #43B94B;
+  --bg-d: #2C8132;
+  --bg-f: #E7FFE8;
   --br-a: #43B94B;
+  --br-B: #E7FFE8;
   --loader: linear-gradient(90deg, #7FFF92 0%, rgba(255, 255, 255, 1) 100%, rgba(255, 255, 255, 1) 5%, #FEFAE9 10%);
 }
 @media (max-width: 1024px) {
@@ -657,6 +661,81 @@ select:-webkit-autofill:focus {
   box-shadow: none;
 }
 
+.main-section {
+  padding: 40px 0;
+}
+.main-section__wrapp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 30px;
+}
+.main-section__top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.main-section__link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: clamp(6px, 3.299vw, 19px);
+  font-size: clamp(14px, 2.778vw, 16px);
+  line-height: 120%;
+  font-weight: 500;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.main-section__link-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: var(--bg-c);
+  border: 1px solid var(--br-a);
+  border-radius: 100px;
+  color: var(--cl-a);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.main-section__link-icon svg {
+  fill: currentColor;
+}
+.main-section__link:hover {
+  color: var(--cl-c);
+}
+.main-section__link:hover span {
+  background-color: var(--bg-a);
+  color: var(--cl-c);
+}
+.main-section__box {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+  grid-template-columns: repeat(4, 1fr);
+  gap: 19px;
+}
+
 .accordion {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -705,7 +784,7 @@ select:-webkit-autofill:focus {
   transition: all 0.3s;
 }
 .accordion__btn:hover .accordion__btn-icon {
-  border: 1px solid #e7ffe8;
+  border: 1px solid var(--br-B);
 }
 .accordion__btn-icon {
   position: relative;
@@ -811,6 +890,12 @@ select:-webkit-autofill:focus {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.footer {
+  padding: 41px 0 24px;
+  background-color: var(--bg-d);
+  color: var(--cl-a);
 }
 
 .faq-section {
