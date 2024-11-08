@@ -54,15 +54,10 @@
   --font-family: "Red Hat Display", sans-serif;
   --cl-a: #ffffff;
   --cl-b: #000000;
+  --cl-c: #43B94B;
   --bg-a: #ffffff;
   --bg-b: #000000;
-  --br-a: #7FFF92;
-  --br-b: #FEFAE9;
-  --br-c: #211C29;
-  --br-d: #B9FF66;
-  --br-e: #cfffd6;
-  --br-f: #41394d;
-  --br-g: #413b53;
+  --br-a: #43B94B;
   --loader: linear-gradient(90deg, #7FFF92 0%, rgba(255, 255, 255, 1) 100%, rgba(255, 255, 255, 1) 5%, #FEFAE9 10%);
 }
 @media (max-width: 1024px) {
@@ -78,6 +73,14 @@
 }
 .logo svg, .logo img {
   height: auto;
+}
+
+h2 {
+  font-family: var(--font-family);
+  font-size: clamp(20px, 5.556vw, 32px);
+  line-height: 130%;
+  color: var(--cl-b);
+  font-weight: 700;
 }
 
 .loader {
@@ -336,6 +339,7 @@ body {
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
+  color: var(--cl-b);
   -webkit-text-size-adjust: 100%;
 }
 body.fixed-body {
@@ -418,7 +422,7 @@ button,
 p {
   margin: 0;
   padding: 0;
-  color: var(--cl-c);
+  color: var(--cl-b);
   font-family: var(--font-family);
   font-style: normal;
   line-height: 133%;
@@ -653,6 +657,106 @@ select:-webkit-autofill:focus {
   box-shadow: none;
 }
 
+.accordion {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 15px;
+}
+.accordion__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.accordion__item.active .accordion__btn-icon {
+  background-color: #E7FFE8;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.accordion .editor {
+  padding: 16px clamp(10px, 5.556vw, 80px) 0 clamp(70px, 11.343vw, 87px);
+}
+.accordion__btn {
+  width: 100%;
+  padding: clamp(10px, 1.695vw, 13px) clamp(10px, 3.911vw, 30px);
+  border: 1px solid var(--br-a);
+  border-radius: 7px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(16px, 3.129vw, 24px);
+  line-height: 120%;
+  font-weight: 700;
+  text-align: left;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.accordion__btn:hover .accordion__btn-icon {
+  border: 1px solid #e7ffe8;
+}
+.accordion__btn-icon {
+  position: relative;
+  z-index: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid transparent;
+  border-radius: 100px;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.accordion__btn-icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 2px;
+  background: var(--cl-c);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.accordion__btn-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  height: 14px;
+  width: 2px;
+  background: var(--cl-c);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
 .review-card {
   padding: clamp(38px, 3.3333vw, 48px) clamp(32px, 3.6111vw, 52px) clamp(37px, 3.9583vw, 57px);
   background: var(--bg-c);
@@ -707,5 +811,19 @@ select:-webkit-autofill:focus {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.faq-section {
+  padding: 70px 0;
+}
+.faq-section__wrapp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: clamp(13px, 5.035vw, 28px);
 }
 /*# sourceMappingURL=style.css.map */

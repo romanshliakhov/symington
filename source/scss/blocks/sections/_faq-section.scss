@@ -1,0 +1,9 @@
+.faq-section {
+    padding: 70px 0;
+
+    &__wrapp {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(13px, 5.035vw, 28px);
+    }
+}

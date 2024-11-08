@@ -13,6 +13,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_sliders_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/sliders.js */ "./source/js/components/sliders.js");
 /* harmony import */ var _components_modals_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/modals.js */ "./source/js/components/modals.js");
 /* harmony import */ var _components_mobile_menu_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/mobile-menu.js */ "./source/js/components/mobile-menu.js");
+/* harmony import */ var _components_accordion_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/accordion.js */ "./source/js/components/accordion.js");
+
 
 
 
@@ -58,6 +60,140 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vendor_swiper_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vendor/swiper.js */ "./source/js/vendor/swiper.js");
 /* harmony import */ var _vendor_swiper_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_vendor_swiper_js__WEBPACK_IMPORTED_MODULE_0__);
 
+
+/***/ }),
+
+/***/ "./source/js/components/accordion.js":
+/*!*******************************************!*\
+  !*** ./source/js/components/accordion.js ***!
+  \*******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   accInit: function() { return /* binding */ accInit; },
+/* harmony export */   accReinit: function() { return /* binding */ accReinit; }
+/* harmony export */ });
+/* harmony import */ var _functions_customFunctions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../functions/customFunctions */ "./source/js/functions/customFunctions.js");
+
+let openedAccordion = null;
+const getAccordions = (accordionParent, dataName) => {
+  return accordionParent.querySelectorAll(`[${dataName}]`);
+};
+const closeAccordion = function (accordion) {
+  let className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "active";
+  accordion.style.maxHeight = 0;
+  (0,_functions_customFunctions__WEBPACK_IMPORTED_MODULE_0__.removeCustomClass)(accordion, className);
+};
+const openAccordion = function (accordion) {
+  let className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "active";
+  let height = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  accordion.style.maxHeight = height ? height : `${accordion.scrollHeight}px`;
+  (0,_functions_customFunctions__WEBPACK_IMPORTED_MODULE_0__.addCustomClass)(accordion, className);
+};
+const toggleAccordionButton = function (button) {
+  let className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "active";
+  (0,_functions_customFunctions__WEBPACK_IMPORTED_MODULE_0__.toggleCustomClass)(button, className);
+  (0,_functions_customFunctions__WEBPACK_IMPORTED_MODULE_0__.toggleCustomClass)(button.parentNode, className);
+};
+const checkIsAccordionOpen = accordion => {
+  return accordion.classList.contains("active");
+};
+const accordionClickHandler = function (e) {
+  e.preventDefault();
+  const currentDataNumber = this.getAttribute("data-id");
+  const accordionParent = this.closest("[data-accordion-init]");
+  const accordionContent = accordionParent.querySelector(`[data-content="${currentDataNumber}"]`);
+  const isAccordionOpen = checkIsAccordionOpen(accordionContent);
+  const isSingle = accordionParent.dataset.single === "true";
+  const hasBreakpoint = accordionParent.dataset.breakpoint !== undefined;
+
+  // Если аккордеон открыт, то закрываем его
+  if (isAccordionOpen) {
+    closeAccordion(accordionContent);
+    toggleAccordionButton(this); // Удаляем active у кнопки
+    openedAccordion = null;
+  } else {
+    // Если single true и нет breakpoint, закрываем предыдущий аккордеон всегда
+    if (isSingle && (!hasBreakpoint || document.documentElement.clientWidth <= accordionParent.dataset.breakpoint)) {
+      if (openedAccordion) {
+        closeAccordion(openedAccordion);
+        const previousButton = accordionParent.querySelector(`[data-id="${openedAccordion.getAttribute('data-content')}"]`);
+        toggleAccordionButton(previousButton); // Удаляем active у кнопки предыдущего аккордеона
+      }
+    }
+    openAccordion(accordionContent);
+    toggleAccordionButton(this); // Добавляем active к текущей кнопке
+    openedAccordion = accordionContent;
+  }
+};
+const activateAccordion = (accordions, handler) => {
+  accordions.forEach(accordion => {
+    accordion.addEventListener("click", handler);
+  });
+};
+const deactivateAccordion = (accordions, handler) => {
+  accordions.forEach(accordion => {
+    accordion.removeEventListener("click", handler);
+  });
+};
+const syncButtonWithContent = (accordionParent, dataBtn, dataContent) => {
+  const accordions = getAccordions(accordionParent, dataBtn);
+  accordions.forEach(button => {
+    const contentId = button.getAttribute(dataBtn);
+    const content = accordionParent.querySelector(`[${dataContent}="${contentId}"]`);
+    if (checkIsAccordionOpen(content)) {
+      (0,_functions_customFunctions__WEBPACK_IMPORTED_MODULE_0__.addCustomClass)(button, "active"); // Синхронизируем состояние кнопки с контентом
+    }
+  });
+};
+const accordionDefaultOpen = (accordionParent, currentId) => {
+  const defaultOpenContent = accordionParent.querySelector(`[data-content="${currentId}"]`);
+  const defaultOpenButton = accordionParent.querySelector(`[data-id="${currentId}"]`);
+
+  // Если есть начально открытый аккордеон, добавляем ему класс active
+  toggleAccordionButton(defaultOpenButton); // Устанавливаем active на кнопку
+  openAccordion(defaultOpenContent); // Открываем контент аккордеона
+  openedAccordion = defaultOpenContent;
+};
+const accInit = (accParents, dataBtn, dataContent) => {
+  accParents.forEach(accordionParent => {
+    if (accordionParent) {
+      const accordions = getAccordions(accordionParent, dataBtn);
+      if (accordionParent.hasAttribute("data-always-open")) {
+        accordions.forEach(button => {
+          const contentId = button.getAttribute(dataBtn);
+          const content = accordionParent.querySelector(`[${dataContent}="${contentId}"]`);
+          openAccordion(content);
+          (0,_functions_customFunctions__WEBPACK_IMPORTED_MODULE_0__.addCustomClass)(button, "active");
+          button.removeEventListener("click", accordionClickHandler);
+        });
+        return;
+      }
+      if (accordionParent.dataset.default) {
+        accordionDefaultOpen(accordionParent, accordionParent.dataset.default);
+      }
+      syncButtonWithContent(accordionParent, dataBtn, dataContent);
+      activateAccordion(accordions, accordionClickHandler);
+    }
+  });
+};
+const accReinit = (accordionParent, dataBtn, dataContent) => {
+  if (accordionParent) {
+    const accordions = getAccordions(accordionParent, dataBtn);
+    deactivateAccordion(accordions, accordionClickHandler);
+    if (openedAccordion) {
+      closeAccordion(openedAccordion);
+      openedAccordion = null;
+    }
+    accInit([accordionParent], dataBtn, dataContent);
+  }
+};
+document.addEventListener("DOMContentLoaded", () => {
+  const accParents = document.querySelectorAll("[data-accordion-init]");
+  accInit(accParents, "data-id", "data-content");
+});
 
 /***/ }),
 
@@ -4928,6 +5064,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	__webpack_require__("./source/js/_vars.js");
 /******/ 	__webpack_require__("./source/js/_vendor.js");
 /******/ 	__webpack_require__("./source/js/main.js");
+/******/ 	__webpack_require__("./source/js/components/accordion.js");
 /******/ 	__webpack_require__("./source/js/components/dinamicHeight.js");
 /******/ 	__webpack_require__("./source/js/components/mobile-menu.js");
 /******/ 	__webpack_require__("./source/js/components/modals.js");

@@ -8,3 +8,11 @@
     height: auto;
   }
 }
+
+h2 {
+  font-family: var(--font-family);
+  font-size: clamp(20px, 5.556vw, 32px);
+  line-height: 130%;
+  color: var(--cl-b);
+  font-weight: 700;
+}
