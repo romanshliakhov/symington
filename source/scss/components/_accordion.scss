@@ -9,7 +9,7 @@
 
         &.active{
             .accordion__btn-icon{
-                background-color: #E7FFE8;
+                background-color: var(--bg-f);
                 transform: rotate(45deg)
             }
         }

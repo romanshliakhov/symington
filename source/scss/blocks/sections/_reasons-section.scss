@@ -25,6 +25,10 @@
     &__detail {
         max-width: 287px;
 
+        @include mobile {
+            max-width: 100%;
+        }
+
         &-icon {
             margin-bottom: clamp(20px, 3.906vw, 30px);
             width: 50px;
